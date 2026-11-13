@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<title>Raj Shinde — Personal Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Header / Status Bar -->
+<header class="toolbar">
+  <div class="brand">
+    <a href="#" class="brand-link" aria-label="Portfolio Home" onclick="turnTo(0); return false;">
+      <span class="brand-mark">RS</span>
+      <span>PERSONAL ARCHIVE <small>PORTFOLIO / 2026</small></span>
+    </a>
+  </div>
+
+  <!-- Recruiter Quick-Access Menu (Desktop / Tablet) -->
+  <nav class="quick-nav" aria-label="Recruiter quick access">
+    <button type="button" class="quick-link" data-goto="10" data-section-key="projects">PROJECTS</button>
+    <button type="button" class="quick-link" data-goto="5" data-section-key="experience">EXPERIENCE</button>
+    <button type="button" class="quick-link" data-goto="17" data-section-key="skills">SKILLS</button>
+    <button type="button" class="quick-link quick-link--resume" data-goto="21" data-section-key="resume">RESUME</button>
+    <button type="button" class="quick-link" data-goto="23" data-section-key="contact">CONTACT</button>
+  </nav>
+
+  <div class="toolbar-right">
+    <!-- Mobile-only instant Resume shortcut -->
+    <button type="button" class="mobile-resume-chip" data-goto="21" data-section-key="resume" aria-label="Jump to Resume section">CV ↗</button>
+    <span class="status"><i></i> AVAILABLE FOR OPPORTUNITIES</span>
+    <button id="wheelToggle" class="icon-btn" title="Toggle scroll page turning" aria-label="Toggle scroll page turning" aria-pressed="true">📜</button>
+    <button id="soundToggle" class="icon-btn" title="Toggle page sound" aria-label="Toggle page sound">♪</button>
+    <!-- Table of Contents Trigger Button -->
+    <button id="tocBtn" class="toc-trigger-btn" aria-haspopup="dialog" aria-expanded="false" aria-controls="tocDrawer" aria-label="Open Table of Contents">
+      <span class="toc-icon" aria-hidden="true">☰</span>
+      <span class="toc-text">CONTENTS</span>
+    </button>
+  </div>
+</header>
+
+<!-- Main Stage -->
+<main class="stage" role="main">
+  <div class="desk-note">
+    <span class="desk-title">A LITTLE ABOUT THE WORK I DO <em>— EST. 2026</em></span>
+    <div class="remaining-indicator" id="remainingIndicator" aria-live="polite">
+      <span class="remaining-label">REMAINING PAGES</span>
+      <strong class="remaining-count" id="remainingCount">24 PAGES LEFT</strong>
+    </div>
+  </div>
+
+  <section class="book-wrap" aria-label="Interactive portfolio book">
+    <div class="book-shadow"></div>
+    <div class="paper-stack" id="paperStack" aria-hidden="true">
+      <span class="stack-layer"></span>
+      <span class="stack-layer"></span>
+      <span class="stack-layer"></span>
+      <span class="stack-layer"></span>
+      <span class="stack-layer"></span>
+      <span class="stack-layer"></span>
+    </div>
+
+    <div class="book" id="book">
+      <!-- 00: COVER -->
+      <article class="sheet cover" data-page="0" aria-label="Portfolio Cover">
+        <div class="cover-inner">
+          <div class="cover-top"><span>PERSONAL PORTFOLIO</span><span>VOL. 01&nbsp; / &nbsp;2026</span></div>
+          <div class="cover-art">
+            <div class="orbit orbit-one"></div>
+            <div class="orbit orbit-two"></div>
+            <div class="monogram">R<span>.</span>S</div>
+            <div class="cover-stamp">DEVELOPER<br>✳ CREATOR<br>BUILDER</div>
+          </div>
+          <div class="cover-title">
+            <p>THE WORK &amp; THINKING OF</p>
+            <h1>Raj<br><em>Shinde.</em></h1>
+          </div>
+          <div class="cover-bottom">
+            <span>FULL STACK WEB DEVELOPER</span>
+            <span class="scroll-prompt">SCROLL TO OPEN <b>↓</b></span>
+            <span>INDIA · 2026</span>
+          </div>
+        </div>
+        <div class="spine"></div>
+      </article>
+
+      <!-- 01: DEDICATED INDEX / TABLE OF CONTENTS PAGE -->
+      <article class="sheet page index-page" data-page="1" aria-label="Table of Contents Page">
+        <div class="page-head"><span>PORTFOLIO DIRECTORY</span><span>VOL. 01 / 2026</span></div>
+        <div class="page-content index-content">
+          <div class="index-header">
+            <div class="index-edition-stamp">
+              <span class="stamp-monogram">RS</span>
+              <span class="stamp-text">ARCHIVE &amp; FOLIO · EST. 2026</span>
+            </div>
+            <h2 class="index-title-main">CONTENTS<span>.</span></h2>
+            <p class="index-subtitle">An overview of my work and journey.</p>
+            <div class="index-ornament" aria-hidden="true">
+              <span class="ornament-line"></span>
+              <span class="ornament-diamond">◆</span>
+              <span class="ornament-line"></span>
+            </div>
+          </div>
+
+          <div class="index-list-wrap">
+            <ol class="index-list" id="indexEntriesList">
+              <li class="index-entry" data-section="0" data-goto="2">
+                <button type="button" class="index-entry-btn" data-goto="2" aria-label="Go to Section 01: Profile, page 03">
+                  <span class="index-num">01</span>
+                  <span class="index-title">Profile</span>
+                  <span class="index-leader" aria-hidden="true"></span>
+                  <span class="index-page-num">03</span>
+                </button>
+              </li>
+              <li class="index-entry" data-section="1" data-goto="3">
+                <button type="button" class="index-entry-btn" data-goto="3" aria-label="Go to Section 02: About Me, page 04">
+                  <span class="index-num">02</span>
+                  <span class="index-title">About Me</span>
+                  <span class="index-leader" aria-hidden="true"></span>
+                  <span class="index-page-num">04</span>
+                </button>
+              </li>
+              <li class="index-entry" data-section="2" data-goto="5">
+                <button type="button" class="index-entry-btn" data-goto="5" aria-label="Go to Section 03: Professional Experience, page 06">
+                  <span class="index-num">03</span>
+                  <span class="index-title">Professional Experience</span>
+                  <span class="index-leader" aria-hidden="true"></span>
+                  <span class="index-page-num">06</span>
+                </button>
+              </li>
+              <li class="index-entry" data-section="3" data-goto="8">
+                <button type="button" class="index-entry-btn" data-goto="8" aria-label="Go to Section 04: Leadership &amp; Community, page 09">
+                  <span class="index-num">04</span>
+                  <span class="index-title">Leadership &amp; Community</span>
+                  <span class="index-leader" aria-hidden="true"></span>
+                  <span class="index-page-num">09</span>
+                </button>
+              </li>
+              <li class="index-entry" data-section="4" data-goto="10">
+                <button type="button" class="index-entry-btn" data-goto="10" aria-label="Go to Section 05: Selected Projects, page 11">
+                  <span class="index-num">05</span>
+                  <span class="index-title">Selected Projects</span>
+                  <span class="index-leader" aria-hidden="true"></span>
+                  <span class="index-page-num">11</span>
+                </button>
+              </li>
+              <li class="index-entry" data-section="5" data-goto="15">
+                <button type="button" class="index-entry-btn" data-goto="15" aria-label="Go to Section 06: Achievements &amp; Recognition, page 16">
+                  <span class="index-num">06</span>
+                  <span class="index-title">Achievements &amp; Recognition</span>
+                  <span class="index-leader" aria-hidden="true"></span>
+                  <span class="index-page-num">16</span>
+                </button>
+              </li>
+              <li class="index-entry" data-section="6" data-goto="17">
+                <button type="button" class="index-entry-btn" data-goto="17" aria-label="Go to Section 07: Technical Skills, page 18">
+                  <span class="index-num">07</span>
+                  <span class="index-title">Technical Skills</span>
+                  <span class="index-leader" aria-hidden="true"></span>
+                  <span class="index-page-num">18</span>
+                </button>
+              </li>
+              <li class="index-entry" data-section="7" data-goto="19">
+                <button type="button" class="index-entry-btn" data-goto="19" aria-label="Go to Section 08: Education, page 20">
+                  <span class="index-num">08</span>
+                  <span class="index-title">Education</span>
+                  <span class="index-leader" aria-hidden="true"></span>
+                  <span class="index-page-num">20</span>
+                </button>
+              </li>
+              <li class="index-entry index-entry--resume" data-section="8" data-goto="21">
+                <button type="button" class="index-entry-btn" data-goto="21" aria-label="Go to Section 09: Resume, page 22">
+                  <span class="index-num">09</span>
+                  <span class="index-title">Resume</span>
+                  <span class="index-leader" aria-hidden="true"></span>
+                  <span class="index-page-num">22</span>
+                </button>
+              </li>
+              <li class="index-entry" data-section="9" data-goto="23">
+                <button type="button" class="index-entry-btn" data-goto="23" aria-label="Go to Section 10: Contact, page 24">
+                  <span class="index-num">10</span>
+                  <span class="index-title">Contact</span>
+                  <span class="index-leader" aria-hidden="true"></span>
+                  <span class="index-page-num">24</span>
+                </button>
+              </li>
+            </ol>
+          </div>
+
+          <div class="index-footnote">
+            <span class="index-footnote-text">CLICK ANY ENTRY TO NAVIGATE DIRECTLY TO SECTION</span>
+            <span class="index-folio-badge">10 SECTIONS · COMPLETE ARCHIVE</span>
+          </div>
+        </div>
+        <div class="page-foot"><span>CONTENTS / DIRECTORY</span><span>02</span></div>
+      </article>
+
+      <!-- 02: PROFILE -->
+      <article class="sheet page profile" data-page="2" aria-label="Profile Page">
+        <div class="page-head"><span>PROFILE — INTRODUCTION</span><span>RAJ SHINDE</span></div>
+        <div class="page-content profile-grid">
+          <div class="profile-main">
+            <p class="eyebrow">HELLO, I'M</p>
+            <h2>Raj<br><em>Shinde</em></h2>
+            <p class="role">Full Stack Web Developer · Backend &amp; AI-integrated Applications</p>
+            <p class="intro">Computer Engineering student with hands-on experience in full-stack development, backend engineering, database management and AI-integrated applications. I build RESTful APIs, database-driven ERP systems and scalable web platforms.</p>
+            <div class="contact-lines">
+              <p><b>EDUCATION</b><span>PCCOER · CGPA 8.71/10</span></p>
+              <p><b>LOCATION</b><span>Pune, Maharashtra, India</span></p>
+              <p><b>EMAIL</b><a href="mailto:mail.shinderaj@gmail.com">mail.shinderaj@gmail.com</a></p>
+              <p><b>PHONE</b><a href="tel:8668865664">8668865664</a></p>
+              <p class="contact-links-row">
+                <b>PROFILES</b>
+                <span class="profile-links">
+                  <a href="https://www.linkedin.com/in/shinderaj" target="_blank" rel="noopener">LinkedIn ↗</a>
+                  <a href="https://github.com/Raj-Shinde0710" target="_blank" rel="noopener">GitHub ↗</a>
+                  <a href="https://leetcode.com/u/Raj_Shinde0710/" target="_blank" rel="noopener">LeetCode ↗</a>
+                  <a href="https://raj-shinde-portfolio.web.app/" target="_blank" rel="noopener">Portfolio ↗</a>
+                </span>
+              </p>
+            </div>
+          </div>
+          <aside class="profile-aside">
+            <div class="portrait-photo">
+              <img src="images/raj-profile.jpg" alt="Raj Shinde profile photograph in checked shirt">
+              <span>RAJ SHINDE</span>
+            </div>
+            <div class="quick-facts">
+              <div><strong>8.71</strong><small>INTEGRATED B.E.<br>CGPA / 10</small></div>
+              <div><strong>18/300+</strong><small>INCEPTIA<br>FINALIST</small></div>
+              <div><strong>6 MONTHS</strong><small>OPPIDAN<br>EXTENSION</small></div>
+            </div>
+          </aside>
+        </div>
+        <div class="page-foot"><span>RAJ SHINDE / PORTFOLIO</span><span>03</span></div>
+      </article>
+
+      <!-- 03: DIVIDER 01 — ABOUT ME -->
+      <article class="sheet divider" data-page="3" data-section-id="about" aria-label="Section Divider: About Me">
+        <div class="divider-inner">
+          <div class="divider-top"><span>SECTION 01</span><span>PERSONAL ARCHIVE</span></div>
+          <div class="divider-center">
+            <span class="divider-num">01</span>
+            <p class="divider-kicker">SECTION 01 — INTRODUCTION</p>
+            <h2>ABOUT <em>ME</em></h2>
+            <div class="divider-rule"></div>
+            <p class="divider-sub">A little about the person behind the code.</p>
+          </div>
+          <div class="divider-bottom"><span>THE APPROACH &amp; MINDSET</span><span>04</span></div>
+        </div>
+        <div class="spine"></div>
+      </article>
+
+      <!-- 04: ABOUT CONTENT -->
+      <article class="sheet page about" data-page="4" aria-label="About Me Content">
+        <div class="page-head"><span>01 — ABOUT ME</span><span>THE APPROACH</span></div>
+        <div class="page-content">
+          <p class="eyebrow">CURIOUS BY DEFAULT. BUILDER BY CHOICE.</p>
+          <h2 class="section-heading">Turning ideas<br>into <em>working software.</em></h2>
+          <div class="about-columns">
+            <p>I’m pursuing an Integrated Bachelor of Engineering in Computer Engineering (2024–2028) at Pimpri Chinchwad College of Engineering and Research, where I currently hold an 8.71/10 CGPA.</p>
+            <p>My experience includes full-stack web development, backend engineering, PostgreSQL and MongoDB database management, secure REST APIs, ERP workflows and Gemini-powered multimodal invoice OCR. I focus on building dependable systems that solve practical problems.</p>
+          </div>
+          <div class="quote">“I enjoy turning complex workflows into reliable, usable software.”</div>
+          <div class="focus-row">
+            <div><span>01</span><b>PRODUCT THINKING</b><small>Understand the problem first</small></div>
+            <div><span>02</span><b>FULL-STACK BUILDING</b><small>Frontend to database</small></div>
+            <div><span>03</span><b>BACKEND ENGINEERING</b><small>APIs, data and secure workflows</small></div>
+          </div>
+        </div>
+        <div class="page-foot"><span>ABOUT / THE APPROACH</span><span>05</span></div>
+      </article>
+
+      <!-- 05: DIVIDER 02 — PROFESSIONAL EXPERIENCE -->
+      <article class="sheet divider" data-page="5" data-section-id="experience" aria-label="Section Divider: Professional Experience">
+        <div class="divider-inner">
+          <div class="divider-top"><span>SECTION 02</span><span>CAREER RECORD</span></div>
+          <div class="divider-center">
+            <span class="divider-num">02</span>
+            <p class="divider-kicker">SECTION 02 — INDUSTRY WORK</p>
+            <h2>PROFESSIONAL <em>EXPERIENCE</em></h2>
+            <div class="divider-rule"></div>
+            <p class="divider-sub">My professional journey and practical experience.</p>
+          </div>
+          <div class="divider-bottom"><span>INTERNSHIPS &amp; ENGINEERING</span><span>06</span></div>
+        </div>
+        <div class="spine"></div>
+      </article>
+
+      <!-- 06: EXPERIENCE 1 — OPPIDAN INDIA -->
+      <article class="sheet page experience-page" data-page="6" aria-label="Experience: Oppidan India">
+        <div class="page-head"><span>02 — EXPERIENCE / 01</span><span>OPPIDAN INDIA</span></div>
+        <div class="page-content">
+          <p class="eyebrow">OPPIDAN INDIA · INDUSTRIAL ERP</p>
+          <h2 class="section-heading">Project-Based<br><em>Intern.</em></h2>
+          <div class="experience-meta"><span>06 JULY 2026 — PRESENT</span><b>OPPIDAN INDIA</b></div>
+          <p class="body-copy">Developing an integrated Industrial ERP platform using React, TypeScript, Node.js and PostgreSQL, spanning procurement, inventory, secure backend services and AI-assisted document workflows.</p>
+          <div class="detail-list">
+            <div><b>01</b><p>Built Gemini-powered invoice OCR with extraction, validation, duplicate detection and review.</p></div>
+            <div><b>02</b><p>Developed procurement workflows covering orders, GRNs, invoices, expenses and payments.</p></div>
+            <div><b>03</b><p>Implemented secure REST APIs using Zod, JWT, RBAC and PostgreSQL transactions.</p></div>
+            <div><b>04</b><p>Developed inventory tracking integrated with ERP product and warehouse data.</p></div>
+          </div>
+          <div class="highlight-strip"><span>EXTENSION</span><b>Awarded a six-month internship extension based on performance.</b></div>
+          <div class="tags"><span>React</span><span>TypeScript</span><span>Node.js</span><span>PostgreSQL</span><span>Zod</span><span>JWT</span><span>RBAC</span><span>Gemini OCR</span></div>
+        </div>
+        <div class="page-foot"><span>EXPERIENCE / OPPIDAN INDIA</span><span>07</span></div>
+      </article>
+
+      <!-- 07: EXPERIENCE 2 — PRAYAAS YOUTH FOUNDATION -->
+      <article class="sheet page experience-page" data-page="7" aria-label="Experience: Prayaas Youth Foundation">
+        <div class="page-head"><span>02 — EXPERIENCE / 02</span><span>PRAYAAS YOUTH FOUNDATION</span></div>
+        <div class="page-content">
+          <p class="eyebrow">PRAYAAS YOUTH FOUNDATION · SOCIAL IMPACT</p>
+          <h2 class="section-heading">Web Development<br><em>Intern.</em></h2>
+          <div class="experience-meta"><span>DECEMBER 2025 — JUNE 2026</span><b>PRAYAAS YOUTH FOUNDATION</b></div>
+          <p class="body-copy">Developed StreetBites, a MERN-based food donation platform connecting donors with NGOs and streamlining essential donation and tracking workflows.</p>
+          <div class="detail-list">
+            <div><b>01</b><p>Implemented authentication, food and clothes donation workflows.</p></div>
+            <div><b>02</b><p>Built donation tracking and real-time status updates.</p></div>
+            <div><b>03</b><p>Integrated Razorpay for online monetary donations.</p></div>
+            <div><b>04</b><p>Developed responsive user interfaces for accessible donor and NGO journeys.</p></div>
+          </div>
+          <div class="highlight-strip"><span>INTELLECTUAL PROPERTY</span><b>Contributed to an application that received government-registered copyright.</b></div>
+          <div class="tags"><span>MongoDB</span><span>Express.js</span><span>React</span><span>Node.js</span><span>Razorpay</span><span>Responsive UI</span></div>
+        </div>
+        <div class="page-foot"><span>EXPERIENCE / PRAYAAS YOUTH FOUNDATION</span><span>08</span></div>
+      </article>
+
+      <!-- 08: DIVIDER 03 — LEADERSHIP & COMMUNITY -->
+      <article class="sheet divider" data-page="8" data-section-id="leadership" aria-label="Section Divider: Leadership & Community">
+        <div class="divider-inner">
+          <div class="divider-top"><span>SECTION 03</span><span>CAMPUS INITIATIVES</span></div>
+          <div class="divider-center">
+            <span class="divider-num">03</span>
+            <p class="divider-kicker">SECTION 03 — COMMUNITY</p>
+            <h2>LEADERSHIP &amp; <em>COMMUNITY</em></h2>
+            <div class="divider-rule"></div>
+            <p class="divider-sub">Building teams, organizing events and creating opportunities.</p>
+          </div>
+          <div class="divider-bottom"><span>CODECRAFT X PCCOER</span><span>09</span></div>
+        </div>
+        <div class="spine"></div>
+      </article>
+
+      <!-- 09: LEADERSHIP CONTENT -->
+      <article class="sheet page leadership-page" data-page="9" aria-label="Leadership: CodeCraft X PCCOER">
+        <div class="page-head"><span>03 — LEADERSHIP</span><span>CODECRAFT X PCCOER</span></div>
+        <div class="page-content">
+          <p class="eyebrow">CODECRAFT X PCCOER · TECHNICAL CLUB</p>
+          <h2 class="section-heading">Club<br><em>President.</em></h2>
+          <div class="experience-meta"><span>CAMPUS TECHNICAL LEADERSHIP</span><b>CODECRAFT X PCCOER</b></div>
+          <p class="body-copy">Led student technical initiatives, coordinated organizing teams, and fostered an active peer community focused on practical software engineering and problem solving.</p>
+          <div class="lead-stat"><strong>10+</strong><span>TECHNICAL EVENTS<br>AND WORKSHOPS ORGANIZED</span></div>
+          <div class="detail-list detail-list--three">
+            <div><b>01</b><p>Organized 10+ technical events and hands-on workshops.</p></div>
+            <div><b>02</b><p>Led student technical initiatives and community activities.</p></div>
+            <div><b>03</b><p>Promoted coding, development and collaborative learning.</p></div>
+          </div>
+        </div>
+        <div class="page-foot"><span>LEADERSHIP / CODECRAFT X PCCOER</span><span>10</span></div>
+      </article>
+
+      <!-- 10: DIVIDER 04 — SELECTED PROJECTS -->
+      <article class="sheet divider" data-page="10" data-section-id="projects" aria-label="Section Divider: Selected Projects">
+        <div class="divider-inner">
+          <div class="divider-top"><span>SECTION 04</span><span>ENGINEERING PORTFOLIO</span></div>
+          <div class="divider-center">
+            <span class="divider-num">04</span>
+            <p class="divider-kicker">SECTION 04 — CASE STUDIES</p>
+            <h2>SELECTED <em>PROJECTS</em></h2>
+            <div class="divider-rule"></div>
+            <p class="divider-sub">Products, platforms and solutions I've developed.</p>
+          </div>
+          <div class="divider-bottom"><span>FOUR FEATURED BUILDS</span><span>11</span></div>
+        </div>
+        <div class="spine"></div>
+      </article>
+
+      <!-- 11: PROJECT 1 — INVOICEFLOW -->
+      <article class="sheet page project-detail no-video" data-page="11" data-project-id="invoiceflow" aria-label="Project: InvoiceFlow">
+        <div class="page-head"><span>04 — PROJECT / 01</span><span>AI / AUTOMATION</span></div>
+        <div class="page-content project-grid no-video">
+          <div class="project-head-group">
+            <p class="eyebrow">PROJECT / 01</p>
+            <h2 class="section-heading">InvoiceFlow<span class="period">.</span></h2>
+            <p class="project-subtitle">AI-Powered Invoice Processing System</p>
+            <div class="experience-meta"><span>OCT — DEC 2026</span><b>AI / AUTOMATION</b></div>
+          </div>
+          <div class="project-body-group">
+            <ul class="project-points">
+              <li>Automated invoice data extraction from scanned documents using Gemini Multimodal API.</li>
+              <li>Invoice validation and duplicate detection pipeline.</li>
+              <li>Editable review and confirmation workflow before posting.</li>
+              <li>Persistent PostgreSQL database storage via Node.js and Express.js.</li>
+            </ul>
+            <div class="tags"><span>React</span><span>Node.js</span><span>Express.js</span><span>PostgreSQL</span><span>Gemini Multimodal API</span></div>
+            <div class="project-actions">
+              <span class="demo-button pending" data-demo-url="">LIVE DEMO LINK TO BE ADDED</span>
+              <a class="demo-button secondary" data-repo-url="https://github.com/Raj-Shinde0710" href="https://github.com/Raj-Shinde0710" target="_blank" rel="noopener">GITHUB REPOSITORY ↗</a>
+            </div>
+          </div>
+        </div>
+        <div class="page-foot"><span>PROJECT 01 / INVOICEFLOW</span><span>12</span></div>
+      </article>
+
+      <!-- 12: PROJECT 2 — SPRINTFOUNDERS -->
+      <article class="sheet page project-detail no-video" data-page="12" data-project-id="sprintfounders" aria-label="Project: SprintFounders">
+        <div class="page-head"><span>04 — PROJECT / 02</span><span>STARTUP PLATFORM</span></div>
+        <div class="page-content project-grid no-video">
+          <div class="project-head-group">
+            <p class="eyebrow">PROJECT / 02</p>
+            <h2 class="section-heading">SprintFounders<span class="period">.</span></h2>
+            <p class="project-subtitle">Startup Platform</p>
+            <div class="experience-meta"><span>FEB — MAR 2026</span><b>STARTUP PLATFORM</b></div>
+          </div>
+          <div class="project-body-group">
+            <ul class="project-points">
+              <li>Full-stack platform connecting founders, developers and investors.</li>
+              <li>AI-powered sprint planning and automated task generation.</li>
+              <li>Integrated mentorship features for early-stage teams.</li>
+              <li>Task tracking, funding workflows, team collaboration and sprint progress monitoring.</li>
+            </ul>
+            <div class="tags"><span>Full Stack</span><span>AI Integration</span><span>Sprint Planning</span><span>Collaboration</span></div>
+            <div class="project-actions">
+              <span class="demo-button pending" data-demo-url="">LIVE DEMO LINK TO BE ADDED</span>
+              <a class="demo-button secondary" data-repo-url="https://github.com/Raj-Shinde0710" href="https://github.com/Raj-Shinde0710" target="_blank" rel="noopener">GITHUB REPOSITORY ↗</a>
+            </div>
+          </div>
+        </div>
+        <div class="page-foot"><span>PROJECT 02 / SPRINTFOUNDERS</span><span>13</span></div>
+      </article>
+
+      <!-- 13: PROJECT 03 — WANDERLUST -->
+      <article class="sheet page project-detail has-video" data-page="13" data-project-id="wanderlust" aria-label="Project: Wanderlust">
+        <div class="page-head"><span>04 — PROJECT / 03</span><span>WEB APPLICATION</span></div>
+        <div class="page-content project-grid has-video">
+          <div class="project-head-group">
+            <p class="eyebrow">PROJECT / 03</p>
+            <h2 class="section-heading">Wanderlust<span class="period">.</span></h2>
+            <p class="project-subtitle">Property Listing &amp; Rental Platform</p>
+            <div class="experience-meta"><span>FEB — MAR 2026</span><b>WEB APPLICATION</b></div>
+          </div>
+          <div class="project-media has-video" data-video-src="assets/videos/wanderlust-demo.mp4">
+            <video class="project-video" controls preload="metadata" playsinline poster="assets/wanderlust-poster.jpg" aria-label="Wanderlust project walkthrough video">
+              <source src="assets/videos/wanderlust-demo.mp4" type="video/mp4">
+              Your browser does not support HTML5 video.
+            </video>
+          </div>
+          <div class="project-body-group">
+            <ul class="project-points">
+              <li>A full-stack property listing and rental platform built with the MERN stack.</li>
+              <li>User authentication, property reviews, and complete listing CRUD operations.</li>
+              <li>Real-time property availability tracking, pricing calculation, and map integration.</li>
+              <li>Responsive React interfaces that improved mobile usability by 40%.</li>
+            </ul>
+            <div class="tags"><span>MongoDB</span><span>Express.js</span><span>React</span><span>Node.js</span><span>REST APIs</span></div>
+            <div class="project-actions">
+              <a class="demo-button" data-demo-url="https://wanderlust-b3is.onrender.com/" href="https://wanderlust-b3is.onrender.com/" target="_blank" rel="noopener">OPEN LIVE DEMO ↗</a>
+              <a class="demo-button secondary" data-repo-url="https://github.com/Raj-Shinde0710/Wanderlust" href="https://github.com/Raj-Shinde0710/Wanderlust" target="_blank" rel="noopener">GITHUB REPOSITORY ↗</a>
+            </div>
+          </div>
+        </div>
+        <div class="page-foot"><span>PROJECT 03 / WANDERLUST</span><span>14</span></div>
+      </article>
+
+      <!-- 14: PROJECT 4 — STREETBITES -->
+      <article class="sheet page project-detail no-video" data-page="14" data-project-id="streetbites" aria-label="Project: StreetBites">
+        <div class="page-head"><span>04 — PROJECT / 04</span><span>SOCIAL IMPACT</span></div>
+        <div class="page-content project-grid no-video">
+          <div class="project-head-group">
+            <p class="eyebrow">PROJECT / 04</p>
+            <h2 class="section-heading">StreetBites<span class="period">.</span></h2>
+            <p class="project-subtitle">Food Donation Platform</p>
+            <div class="experience-meta"><span>DEC 2025 — JUN 2026</span><b>SOCIAL IMPACT</b></div>
+          </div>
+          <div class="project-body-group">
+            <ul class="project-points">
+              <li>MERN-based donation platform connecting donors with NGOs.</li>
+              <li>Food and clothes donation workflows with donation tracking and real-time status updates.</li>
+              <li>Integrated Razorpay for online monetary donations.</li>
+              <li>Received government-registered software copyright.</li>
+            </ul>
+            <div class="tags"><span>MongoDB</span><span>Express.js</span><span>React</span><span>Node.js</span><span>Razorpay</span></div>
+            <div class="project-actions">
+              <a class="demo-button" data-demo-url="https://streetbites-8b424.web.app/" href="https://streetbites-8b424.web.app/" target="_blank" rel="noopener">OPEN LIVE DEMO ↗</a>
+              <a class="demo-button secondary" data-repo-url="https://github.com/Raj-Shinde0710" href="https://github.com/Raj-Shinde0710" target="_blank" rel="noopener">GITHUB REPOSITORY ↗</a>
+            </div>
+          </div>
+        </div>
+        <div class="page-foot"><span>PROJECT 04 / STREETBITES</span><span>15</span></div>
+      </article>
+
+      <!-- 15: DIVIDER 05 — ACHIEVEMENTS & RECOGNITION -->
+      <article class="sheet divider" data-page="15" data-section-id="achievements" aria-label="Section Divider: Achievements & Recognition">
+        <div class="divider-inner">
+          <div class="divider-top"><span>SECTION 05</span><span>PROOF OF WORK</span></div>
+          <div class="divider-center">
+            <span class="divider-num">05</span>
+            <p class="divider-kicker">SECTION 05 — HONORS</p>
+            <h2>ACHIEVEMENTS &amp; <em>RECOGNITION</em></h2>
+            <div class="divider-rule"></div>
+            <p class="divider-sub">Milestones and accomplishments.</p>
+          </div>
+          <div class="divider-bottom"><span>HACKATHONS · COMPETITIONS · IP</span><span>16</span></div>
+        </div>
+        <div class="spine"></div>
+      </article>
+
+      <!-- 16: ACHIEVEMENTS CONTENT -->
+      <article class="sheet page achievements" data-page="16" aria-label="Achievements & Recognition Content">
+        <div class="page-head"><span>05 — RECOGNITION</span><span>PROOF OF WORK</span></div>
+        <div class="page-content">
+          <p class="eyebrow">MILESTONES THAT MATTER</p>
+          <h2 class="section-heading">A little<br><em>recognition.</em></h2>
+          <div class="achievement-list">
+            <div class="achievement-row">
+              <span class="achievement-number">01</span>
+              <div>
+                <small>NATIONAL HACKATHON · TOP 18 / 300+ TEAMS</small>
+                <h3>Inceptia National Hackathon Finalist</h3>
+                <p>Selected among the top 18 teams out of 300+ participating teams nationwide.</p>
+              </div>
+            </div>
+            <div class="achievement-row">
+              <span class="achievement-number">02</span>
+              <div>
+                <small>NATIONAL HACKATHON · TOP 6 / 150+ TEAMS</small>
+                <h3>Kurukshetra 2.0 National Hackathon</h3>
+                <p>Achieved a top 6 finalist position among 150+ competing teams.</p>
+              </div>
+            </div>
+            <div class="achievement-row">
+              <span class="achievement-number">03</span>
+              <div>
+                <small>PROJECT COMPETITION · 1ST PLACE</small>
+                <h3>DBMS Project Competition — 1st Place</h3>
+                <p>Awarded first place for database architecture, execution and technical design.</p>
+              </div>
+            </div>
+            <div class="achievement-row">
+              <span class="achievement-number">04</span>
+              <div>
+                <small>PROJECT COMPETITION · 2ND PLACE</small>
+                <h3>AI Project Competition — 2nd Place</h3>
+                <p>Recognized with second place for applied AI problem solving and implementation.</p>
+              </div>
+            </div>
+            <div class="achievement-row">
+              <span class="achievement-number">05</span>
+              <div>
+                <small>LEADERSHIP · CODECRAFT X PCCOER</small>
+                <h3>President, CodeCraft X PCCOER</h3>
+                <p>Organized 10+ technical events and workshops across the student developer community.</p>
+              </div>
+            </div>
+            <div class="achievement-row">
+              <span class="achievement-number">06</span>
+              <div>
+                <small>INTELLECTUAL PROPERTY · REGISTERED</small>
+                <h3>Government-Registered Software Copyright Holder</h3>
+                <p>Official government-registered software copyright holder for a web application.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="page-foot"><span>ACHIEVEMENTS &amp; RECOGNITION</span><span>17</span></div>
+      </article>
+
+      <!-- 17: DIVIDER 06 — TECHNICAL SKILLS -->
+      <article class="sheet divider" data-page="17" data-section-id="skills" aria-label="Section Divider: Technical Skills">
+        <div class="divider-inner">
+          <div class="divider-top"><span>SECTION 06</span><span>CAPABILITIES</span></div>
+          <div class="divider-center">
+            <span class="divider-num">06</span>
+            <p class="divider-kicker">SECTION 06 — STACK</p>
+            <h2>TECHNICAL <em>SKILLS</em></h2>
+            <div class="divider-rule"></div>
+            <p class="divider-sub">My engineering toolkit.</p>
+          </div>
+          <div class="divider-bottom"><span>LANGUAGES · FRAMEWORKS · AI</span><span>18</span></div>
+        </div>
+        <div class="spine"></div>
+      </article>
+
+      <!-- 18: TECHNICAL SKILLS CONTENT -->
+      <article class="sheet page toolkit" data-page="18" aria-label="Technical Skills Content">
+        <div class="page-head"><span>06 — TECHNICAL SKILLS</span><span>WHAT I WORK WITH</span></div>
+        <div class="page-content">
+          <p class="eyebrow">TOOLS ARE ONLY AS GOOD AS THE THINGS YOU MAKE</p>
+          <h2 class="section-heading">My technical<br><em>toolkit.</em></h2>
+          <div class="skill-groups">
+            <div><small>PROGRAMMING LANGUAGES</small><p>Java · JavaScript · TypeScript · Python · C</p></div>
+            <div><small>FRONTEND &amp; BACKEND</small><p>React.js · HTML5 · CSS3 · Tailwind CSS · Bootstrap · Node.js · Express.js · NestJS · REST APIs</p></div>
+            <div><small>DATABASES &amp; ORM</small><p>MongoDB · PostgreSQL · MySQL · Firebase · Prisma</p></div>
+            <div><small>TOOLS</small><p>Git · GitHub · Postman · Hoppscotch · Vite</p></div>
+            <div><small>CORE CONCEPTS</small><p>DSA · OOP · DBMS · Authentication · JWT · RBAC · MVC · API Integration</p></div>
+            <div><small>AI TECHNOLOGIES</small><p>Google Gemini API · Multimodal OCR</p></div>
+          </div>
+        </div>
+        <div class="page-foot"><span>TECHNICAL SKILLS / TOOLKIT</span><span>19</span></div>
+      </article>
+
+      <!-- 19: DIVIDER 07 — EDUCATION -->
+      <article class="sheet divider" data-page="19" data-section-id="education" aria-label="Section Divider: Education">
+        <div class="divider-inner">
+          <div class="divider-top"><span>SECTION 07</span><span>ACADEMIC RECORD</span></div>
+          <div class="divider-center">
+            <span class="divider-num">07</span>
+            <p class="divider-kicker">SECTION 07 — ACADEMICS</p>
+            <h2><em>EDUCATION</em></h2>
+            <div class="divider-rule"></div>
+            <p class="divider-sub">My academic journey.</p>
+          </div>
+          <div class="divider-bottom"><span>PCCOER · 2024 — 2028</span><span>20</span></div>
+        </div>
+        <div class="spine"></div>
+      </article>
+
+      <!-- 20: EDUCATION CONTENT -->
+      <article class="sheet page education-page" data-page="20" aria-label="Education Content">
+        <div class="page-head"><span>07 — EDUCATION</span><span>ACADEMIC CREDENTIALS</span></div>
+        <div class="page-content">
+          <p class="eyebrow">ACADEMIC FOUNDATION</p>
+          <h2 class="section-heading">Integrated B.E. in<br><em>Computer Engineering.</em></h2>
+          <div class="experience-meta"><span>SEPTEMBER 2024 — JUNE 2028</span><b>PIMPRI CHINCHWAD COLLEGE OF ENGINEERING AND RESEARCH</b></div>
+          <div class="edu-metrics">
+            <div class="edu-card">
+              <small>INSTITUTION</small>
+              <strong>Pimpri Chinchwad College of Engineering and Research (PCCOER)</strong>
+              <p>Pune, Maharashtra, India</p>
+            </div>
+            <div class="edu-card">
+              <small>ACADEMIC STANDING</small>
+              <strong>8.71 / 10 CGPA</strong>
+              <p>Current Year: Third Year</p>
+            </div>
+            <div class="edu-card">
+              <small>PROGRAM DURATION</small>
+              <strong>Sept 2024 – June 2028</strong>
+              <p>Integrated Bachelor of Engineering</p>
+            </div>
+          </div>
+          <div class="highlight-strip">
+            <span>CAMPUS IMPACT</span>
+            <b>Balancing strong academic performance with industry internships, national hackathon finals, and serving as President of CodeCraft X PCCOER.</b>
+          </div>
+        </div>
+        <div class="page-foot"><span>EDUCATION / PCCOER</span><span>21</span></div>
+      </article>
+
+      <!-- 21: DIVIDER 08 — RESUME -->
+      <article class="sheet divider" data-page="21" data-section-id="resume" aria-label="Section Divider: Resume">
+        <div class="divider-inner">
+          <div class="divider-top"><span>SECTION 08</span><span>OFFICIAL DOSSIER</span></div>
+          <div class="divider-center">
+            <span class="divider-num">08</span>
+            <p class="divider-kicker">SECTION 08 — CREDENTIALS</p>
+            <h2><em>RESUME</em></h2>
+            <div class="divider-rule"></div>
+            <p class="divider-sub">Official credentials, professional summary and verified CV.</p>
+          </div>
+          <div class="divider-bottom"><span>GOOGLE DRIVE &amp; VERIFIED PDF</span><span>22</span></div>
+        </div>
+        <div class="spine"></div>
+      </article>
+
+      <!-- 22: RESUME CONTENT -->
+      <article class="sheet page resume-page" data-page="22" aria-label="Resume Content">
+        <div class="page-head"><span>08 — RESUME</span><span>CURRICULUM VITAE</span></div>
+        <div class="page-content resume-grid">
+          <div class="resume-main">
+            <p class="eyebrow">OFFICIAL CREDENTIALS &amp; SUMMARY</p>
+            <h2>Raj<br><em>Shinde</em></h2>
+            <p class="role">Full Stack Web Developer · Backend &amp; AI-integrated Applications</p>
+            <p class="intro">Computer Engineering student with hands-on experience in full-stack development, backend engineering, database management and AI-integrated applications.</p>
+            
+            <div class="resume-meta-box">
+              <div><small>DEGREE</small><b>Integrated B.E. Computer Engineering</b></div>
+              <div><small>COLLEGE</small><b>PCCOER, Pune · 8.71 CGPA</b></div>
+              <div><small>SPECIALIZATION</small><b>MERN · TypeScript · PostgreSQL · Gemini AI</b></div>
+            </div>
+
+            <div class="resume-actions-group">
+              <a class="resume-btn primary" href="https://drive.google.com/file/d/1e9qlWm6bp-1-j1EkLLEvM7YLEgjmaJei/view?usp=drive_link" target="_blank" rel="noopener" aria-label="View Resume in Google Drive (opens in new tab)">
+                <span class="btn-icon">↗</span> VIEW RESUME (DRIVE)
+              </a>
+              <a class="resume-btn secondary" href="https://drive.google.com/uc?export=download&id=1e9qlWm6bp-1-j1EkLLEvM7YLEgjmaJei" target="_blank" rel="noopener" aria-label="Direct Download Resume from Google Drive">
+                <span class="btn-icon">⤓</span> DOWNLOAD RESUME
+              </a>
+              <a class="resume-btn tertiary" href="assets/resume.pdf" download="Raj_Shinde_Resume.pdf" aria-label="Download Local PDF Backup">
+                <span class="btn-icon">↓</span> LOCAL PDF BACKUP
+              </a>
+            </div>
+            <p class="resume-format-note">Single-page verified PDF · Direct recruiter download · Fast preview available</p>
+          </div>
+
+          <aside class="resume-visual">
+            <div class="resume-preview-card">
+              <img src="assets/resume-preview.jpg" alt="Official Raj Shinde resume document preview thumbnail" loading="lazy">
+              <div class="resume-preview-badge">VERIFIED PDF</div>
+              <a class="resume-preview-link" href="https://drive.google.com/file/d/1e9qlWm6bp-1-j1EkLLEvM7YLEgjmaJei/view?usp=drive_link" target="_blank" rel="noopener" aria-label="Preview full resume on Google Drive">
+                <span>VIEW FULL RESUME ↗</span>
+              </a>
+            </div>
+          </aside>
+        </div>
+        <div class="page-foot"><span>RESUME / CURRICULUM VITAE</span><span>23</span></div>
+      </article>
+
+      <!-- 23: DIVIDER 09 — LET'S CONNECT -->
+      <article class="sheet divider" data-page="23" data-section-id="contact" aria-label="Section Divider: Contact">
+        <div class="divider-inner">
+          <div class="divider-top"><span>SECTION 09</span><span>NEXT CHAPTER</span></div>
+          <div class="divider-center">
+            <span class="divider-num">09</span>
+            <p class="divider-kicker">SECTION 09 — CLOSING</p>
+            <h2>LET'S <em>CONNECT</em></h2>
+            <div class="divider-rule"></div>
+            <p class="divider-sub">The next chapter starts here.</p>
+          </div>
+          <div class="divider-bottom"><span>OPPORTUNITIES &amp; COLLABORATION</span><span>24</span></div>
+        </div>
+        <div class="spine"></div>
+      </article>
+
+      <!-- 24: CONTACT CONTENT -->
+      <article class="sheet page closing" data-page="24" aria-label="Contact Content">
+        <div class="page-head"><span>09 — LET'S CONNECT</span><span>CONTACT</span></div>
+        <div class="page-content closing-content">
+          <p class="eyebrow">HAVE A GOOD PROBLEM TO SOLVE?</p>
+          <h2>LET'S BUILD<br><em>SOMETHING USEFUL.</em></h2>
+          <p class="closing-copy">Open to opportunities in full-stack development, backend engineering, AI-integrated applications and meaningful product collaborations.</p>
+          <div class="closing-cta-row">
+            <a class="email-button" href="mailto:mail.shinderaj@gmail.com">mail.shinderaj@gmail.com ↗</a>
+            <a class="phone-button" href="tel:8668865664">PHONE: 8668865664</a>
+            <a class="closing-resume-button" href="https://drive.google.com/file/d/1e9qlWm6bp-1-j1EkLLEvM7YLEgjmaJei/view?usp=drive_link" target="_blank" rel="noopener">VIEW RESUME ↗</a>
+          </div>
+          <div class="social-links">
+            <a href="https://www.linkedin.com/in/shinderaj" target="_blank" rel="noopener">LINKEDIN ↗</a>
+            <a href="https://github.com/Raj-Shinde0710" target="_blank" rel="noopener">GITHUB ↗</a>
+            <a href="https://leetcode.com/u/Raj_Shinde0710/" target="_blank" rel="noopener">LEETCODE ↗</a>
+            <a href="assets/resume.pdf" download="Raj_Shinde_Resume.pdf">DOWNLOAD CV ⤓</a>
+          </div>
+          <div class="signature">Raj Shinde<span>.</span></div>
+        </div>
+        <div class="page-foot"><span>THANK YOU FOR READING</span><span>25</span></div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Bottom Controls -->
+  <div class="controls">
+    <button id="prev" class="nav-btn" disabled>← <span>PREVIOUS</span></button>
+    <div class="progress">
+      <span id="pageLabel">COVER</span>
+      <div class="progress-track"><i id="progressBar"></i></div>
+      <span id="pageCount">01 / 25</span>
+    </div>
+    <button id="next" class="nav-btn"><span>OPEN FILE</span> →</button>
+  </div>
+  <p class="hint" id="hint">SCROLL OR USE THE ARROWS TO OPEN YOUR FILE</p>
+</main>
+
+<!-- Interactive Table of Contents Modal / Drawer -->
+<div class="toc-backdrop" id="tocBackdrop" aria-hidden="true"></div>
+<aside class="toc-drawer" id="tocDrawer" role="dialog" aria-modal="true" aria-label="Table of Contents" aria-hidden="true">
+  <div class="toc-header">
+    <div class="toc-brand">
+      <span class="brand-mark">RS</span>
+      <div>
+        <strong>TABLE OF CONTENTS</strong>
+        <small>PORTFOLIO ARCHIVE / 2026</small>
+      </div>
+    </div>
+    <button type="button" class="toc-close-btn" id="tocCloseBtn" aria-label="Close Table of Contents">✕</button>
+  </div>
+
+  <div class="toc-quick-bar">
+    <span class="toc-quick-label">RECRUITER SHORTCUTS</span>
+    <div class="toc-quick-pills">
+      <button type="button" class="toc-pill" data-goto="10" data-section-key="projects">Projects</button>
+      <button type="button" class="toc-pill" data-goto="5" data-section-key="experience">Experience</button>
+      <button type="button" class="toc-pill" data-goto="17" data-section-key="skills">Skills</button>
+      <button type="button" class="toc-pill toc-pill--resume" data-goto="21" data-section-key="resume">Resume</button>
+      <button type="button" class="toc-pill" data-goto="23" data-section-key="contact">Contact</button>
+    </div>
+  </div>
+
+  <nav class="toc-nav" aria-label="Portfolio Sections">
+    <ol class="toc-list" id="tocEntriesList">
+      <li class="toc-item" data-section="0">
+        <button type="button" class="toc-link" data-goto="2">
+          <span class="toc-num">01</span>
+          <div class="toc-info">
+            <span class="toc-title">Profile</span>
+            <span class="toc-desc">Introduction, verified credentials &amp; contact</span>
+          </div>
+          <span class="toc-arrow" aria-hidden="true">→</span>
+        </button>
+      </li>
+      <li class="toc-item" data-section="1">
+        <button type="button" class="toc-link" data-goto="3">
+          <span class="toc-num">02</span>
+          <div class="toc-info">
+            <span class="toc-title">About Me</span>
+            <span class="toc-desc">Mindset, technical approach &amp; focus areas</span>
+          </div>
+          <span class="toc-arrow" aria-hidden="true">→</span>
+        </button>
+      </li>
+      <li class="toc-item" data-section="2">
+        <button type="button" class="toc-link" data-goto="5">
+          <span class="toc-num">03</span>
+          <div class="toc-info">
+            <span class="toc-title">Professional Experience</span>
+            <span class="toc-desc">Oppidan India &amp; Prayaas Youth Foundation</span>
+          </div>
+          <span class="toc-arrow" aria-hidden="true">→</span>
+        </button>
+      </li>
+      <li class="toc-item" data-section="3">
+        <button type="button" class="toc-link" data-goto="8">
+          <span class="toc-num">04</span>
+          <div class="toc-info">
+            <span class="toc-title">Leadership &amp; Community</span>
+            <span class="toc-desc">President, CodeCraft X PCCOER</span>
+          </div>
+          <span class="toc-arrow" aria-hidden="true">→</span>
+        </button>
+      </li>
+      <li class="toc-item" data-section="4">
+        <button type="button" class="toc-link" data-goto="10">
+          <span class="toc-num">05</span>
+          <div class="toc-info">
+            <span class="toc-title">Selected Projects</span>
+            <span class="toc-desc">InvoiceFlow, SprintFounders, Wanderlust, StreetBites</span>
+          </div>
+          <span class="toc-arrow" aria-hidden="true">→</span>
+        </button>
+      </li>
+      <li class="toc-item" data-section="5">
+        <button type="button" class="toc-link" data-goto="15">
+          <span class="toc-num">06</span>
+          <div class="toc-info">
+            <span class="toc-title">Achievements &amp; Recognition</span>
+            <span class="toc-desc">Hackathon finals, competition wins &amp; copyright</span>
+          </div>
+          <span class="toc-arrow" aria-hidden="true">→</span>
+        </button>
+      </li>
+      <li class="toc-item" data-section="6">
+        <button type="button" class="toc-link" data-goto="17">
+          <span class="toc-num">07</span>
+          <div class="toc-info">
+            <span class="toc-title">Technical Skills</span>
+            <span class="toc-desc">Languages, full stack, databases &amp; Gemini AI</span>
+          </div>
+          <span class="toc-arrow" aria-hidden="true">→</span>
+        </button>
+      </li>
+      <li class="toc-item" data-section="7">
+        <button type="button" class="toc-link" data-goto="19">
+          <span class="toc-num">08</span>
+          <div class="toc-info">
+            <span class="toc-title">Education</span>
+            <span class="toc-desc">Integrated B.E. Computer Engineering (PCCOER)</span>
+          </div>
+          <span class="toc-arrow" aria-hidden="true">→</span>
+        </button>
+      </li>
+      <li class="toc-item toc-item--resume" data-section="8">
+        <button type="button" class="toc-link" data-goto="21">
+          <span class="toc-num">09</span>
+          <div class="toc-info">
+            <span class="toc-title">Resume</span>
+            <span class="toc-desc">Official CV · Google Drive &amp; direct download</span>
+          </div>
+          <span class="toc-arrow" aria-hidden="true">→</span>
+        </button>
+      </li>
+      <li class="toc-item" data-section="9">
+        <button type="button" class="toc-link" data-goto="23">
+          <span class="toc-num">10</span>
+          <div class="toc-info">
+            <span class="toc-title">Contact</span>
+            <span class="toc-desc">Email, phone, LinkedIn &amp; opportunities</span>
+          </div>
+          <span class="toc-arrow" aria-hidden="true">→</span>
+        </button>
+      </li>
+    </ol>
+  </nav>
+
+  <div class="toc-footer">
+    <a class="toc-drive-btn" href="https://drive.google.com/file/d/1e9qlWm6bp-1-j1EkLLEvM7YLEgjmaJei/view?usp=drive_link" target="_blank" rel="noopener">
+      <span>VIEW GOOGLE DRIVE RESUME ↗</span>
+    </a>
+  </div>
+</aside>
+
+<footer>DESIGNED AS A DIGITAL FILE <span>·</span> BUILT TO BE EXPLORED</footer>
+<script src="script.js"></script>
+</body>
+</html>

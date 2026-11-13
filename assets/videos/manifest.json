@@ -1,0 +1,37 @@
+{
+  "wanderlust": {
+    "filename": "wanderlust-demo.mp4",
+    "path": "assets/videos/wanderlust-demo.mp4",
+    "poster": "assets/wanderlust-poster.jpg",
+    "title": "Wanderlust project walkthrough video",
+    "available": true
+  },
+  "invoiceflow": {
+    "filename": "invoiceflow-demo.mp4",
+    "path": "assets/videos/invoiceflow-demo.mp4",
+    "poster": "",
+    "title": "InvoiceFlow project walkthrough video",
+    "available": false
+  },
+  "sprintfounders": {
+    "filename": "sprintfounders-demo.mp4",
+    "path": "assets/videos/sprintfounders-demo.mp4",
+    "poster": "",
+    "title": "SprintFounders project walkthrough video",
+    "available": false
+  },
+  "staynest": {
+    "filename": "staynest-demo.mp4",
+    "path": "assets/videos/staynest-demo.mp4",
+    "poster": "",
+    "title": "StayNest project walkthrough video",
+    "available": false
+  },
+  "streetbites": {
+    "filename": "streetbites-demo.mp4",
+    "path": "assets/videos/streetbites-demo.mp4",
+    "poster": "",
+    "title": "StreetBites project walkthrough video",
+    "available": false
+  }
+}
