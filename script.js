@@ -165,8 +165,8 @@ const PROJECT_VIDEO_MANIFEST = {
     filename: 'streetbites-demo.mp4',
     path: 'assets/videos/streetbites-demo.mp4',
     poster: '',
-    title: 'StreetBites project walkthrough video',
-    available: false
+    title: 'StreetBites demonstration video',
+    available: true
   }
 };
 
@@ -197,7 +197,7 @@ function applyProjectMediaConfig(manifest) {
         video.controls = true;
         video.muted = true;
         video.volume = 0;
-        video.preload = 'metadata';
+        video.preload = 'none';
         video.playsInline = true;
         if (config.poster) video.poster = config.poster;
         video.setAttribute('aria-label', config.title || `${projectId} project walkthrough video`);
@@ -226,7 +226,7 @@ function applyProjectMediaConfig(manifest) {
           video.controls = true;
           video.muted = true;
           video.volume = 0;
-          video.preload = 'metadata';
+          video.preload = video.getAttribute('preload') || 'none';
           video.playsInline = true;
           if (config.poster && !video.getAttribute('poster')) video.poster = config.poster;
         }
@@ -856,3 +856,4 @@ initProjectMedia();
 initSections();
 syncRestingState(0);
 updateUI();
+window.turnTo = turnTo;

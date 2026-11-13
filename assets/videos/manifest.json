@@ -31,7 +31,7 @@
     "filename": "streetbites-demo.mp4",
     "path": "assets/videos/streetbites-demo.mp4",
     "poster": "",
-    "title": "StreetBites project walkthrough video",
-    "available": false
+    "title": "StreetBites demonstration video",
+    "available": true
   }
 }
