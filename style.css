@@ -1315,6 +1315,76 @@ footer,
   background: #07152f;
 }
 
+/* Video Sound Toggle Button */
+.video-sound-toggle {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 8;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(7, 21, 47, 0.88);
+  border: 1px solid #c4a65d;
+  color: #dfc47f;
+  padding: 5px 9px;
+  font: 600 10px/1 "DM Mono", monospace;
+  letter-spacing: 0.8px;
+  cursor: pointer;
+  border-radius: 2px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.45);
+  transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.15s ease;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.video-sound-toggle:hover {
+  background: #0d2454;
+  border-color: #f0d58c;
+  color: #f6e1a2;
+}
+
+.video-sound-toggle:active {
+  transform: scale(0.96);
+}
+
+.video-sound-toggle .sound-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  color: inherit;
+}
+
+.video-sound-toggle .sound-icon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.video-sound-toggle.is-unmuted {
+  background: #14356e;
+  border-color: #e6c779;
+  color: #fff4d0;
+}
+
+.video-sound-toggle.is-unmuted .sound-icon--muted {
+  display: none !important;
+}
+
+.video-sound-toggle.is-unmuted .sound-icon--unmuted {
+  display: inline-flex !important;
+}
+
+.video-sound-toggle:not(.is-unmuted) .sound-icon--muted {
+  display: inline-flex !important;
+}
+
+.video-sound-toggle:not(.is-unmuted) .sound-icon--unmuted {
+  display: none !important;
+}
+
 /* Expanded single editorial column layout when video is UNAVAILABLE */
 .project-grid.no-video,
 .project-grid:not(.has-video) {
@@ -2310,6 +2380,161 @@ footer span {
 }
 
 /* =========================================================
+   Mobile & Tablet Project Layout (768px and below)
+   Single-column structured layout:
+   1. Category & Eyebrow
+   2. Project Title
+   3. Subtitle
+   4. Description & Feature List
+   5. Tech Stack (Tags)
+   6. Project Video
+   7. Live Demo Button
+   8. GitHub Repository Button
+   ========================================================= */
+@media (max-width: 768px) {
+  .project-grid.has-video,
+  .project-grid.no-video,
+  .project-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    grid-template-columns: none !important;
+    grid-template-rows: none !important;
+    grid-template-areas: none !important;
+    justify-content: flex-start;
+    align-items: stretch;
+    width: 100%;
+    max-width: 100%;
+    gap: clamp(4px, 1dvh, 8px);
+    overflow: hidden;
+  }
+
+  /* 1, 2, 3: Project number, category, title, subtitle */
+  .project-head-group {
+    order: 1 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    flex-shrink: 0;
+  }
+
+  .project-head-group .section-heading {
+    margin-bottom: clamp(2px, 0.4dvh, 4px);
+    font-size: clamp(20px, 4vw, 28px);
+  }
+
+  .project-head-group .project-subtitle {
+    margin-bottom: clamp(2px, 0.4dvh, 4px);
+    font-size: clamp(10px, 1.8vw, 12px);
+  }
+
+  .project-head-group .experience-meta {
+    margin: clamp(2px, 0.4dvh, 4px) 0 0;
+    font-size: clamp(8px, 1.4vw, 9.5px);
+  }
+
+  /* Flatten body group so points, tags and actions can be ordered around video */
+  .project-body-group {
+    display: contents !important;
+  }
+
+  /* 4: Project description and feature list */
+  .project-grid .project-points {
+    order: 2 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    display: flex !important;
+    flex-direction: column !important;
+    grid-template-columns: none !important;
+    gap: clamp(3px, 0.6dvh, 5px);
+    margin: 0 0 clamp(2px, 0.5dvh, 6px);
+    padding-left: 14px;
+  }
+
+  .project-grid .project-points li {
+    padding: 2px 4px 2px 16px;
+    font-size: clamp(9px, 1.5vw, 11.5px);
+    line-height: 1.35;
+  }
+
+  .project-grid .project-points li::before {
+    left: 4px;
+    top: 3px;
+    font-size: 8px;
+  }
+
+  /* 5: Technology stack */
+  .project-grid .tags {
+    order: 3 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 0 clamp(2px, 0.5dvh, 6px);
+    gap: 4px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .project-grid .tags span {
+    font-size: clamp(7px, 1.2vw, 9px);
+    padding: 2px 6px;
+  }
+
+  /* 6: Project video */
+  .project-grid.has-video .project-media,
+  .project-media {
+    order: 4 !important;
+    width: 100% !important;
+    max-width: min(100%, 540px) !important;
+    height: auto !important;
+    max-height: none !important;
+    margin: clamp(3px, 0.8dvh, 8px) auto !important;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .project-video {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+    object-fit: contain !important;
+    object-position: center !important;
+  }
+
+  .video-sound-toggle {
+    top: 6px;
+    right: 6px;
+    padding: 4px 7px;
+    font-size: 8.5px;
+    gap: 4px;
+  }
+
+  .video-sound-toggle .sound-icon {
+    width: 12px;
+    height: 12px;
+  }
+
+  /* 7, 8: Live Demo button & GitHub Repository button */
+  .project-grid .project-actions {
+    order: 5 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 6px;
+    margin-top: clamp(2px, 0.5dvh, 6px);
+  }
+
+  .project-actions .demo-button {
+    flex: 1 1 calc(50% - 6px);
+    min-width: 110px;
+    text-align: center;
+    justify-content: center;
+    padding: 6px 8px;
+    font-size: clamp(7.5px, 1.3vw, 9.5px);
+  }
+}
+
+/* =========================================================
    Mobile Viewports (<= 650px: 390x844, 375x812, 360x800)
    ========================================================= */
 @media (max-width: 650px) {
@@ -2721,26 +2946,7 @@ footer span {
     font-size: 8px;
   }
 
-  /* Projects on mobile */
-  .project-grid {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: stretch;
-    gap: 8px;
-  }
-
-  .project-subtitle {
-    font-size: 10.5px;
-    margin-bottom: 3px;
-  }
-
-  .project-media {
-    width: 100%;
-    height: auto;
-    max-height: none;
-  }
-
+  /* Video placeholder controls on small mobile */
   .video-play {
     width: 32px;
     height: 32px;
@@ -2753,23 +2959,6 @@ footer span {
 
   .video-placeholder small {
     font-size: 6.5px;
-  }
-
-  .project-points {
-    font-size: 10px;
-    line-height: 1.35;
-    margin-bottom: 5px;
-    padding-left: 14px;
-  }
-
-  .project-actions {
-    margin-top: 6px;
-    gap: 5px;
-  }
-
-  .demo-button {
-    font-size: 7.5px;
-    padding: 7px 9px;
   }
 
   /* Achievements on mobile (6 items) */

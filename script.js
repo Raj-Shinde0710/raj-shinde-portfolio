@@ -195,6 +195,8 @@ function applyProjectMediaConfig(manifest) {
         const video = document.createElement('video');
         video.className = 'project-video';
         video.controls = true;
+        video.muted = true;
+        video.volume = 0;
         video.preload = 'metadata';
         video.playsInline = true;
         if (config.poster) video.poster = config.poster;
@@ -222,11 +224,15 @@ function applyProjectMediaConfig(manifest) {
         const video = mediaBox.querySelector('video');
         if (video) {
           video.controls = true;
+          video.muted = true;
+          video.volume = 0;
           video.preload = 'metadata';
           video.playsInline = true;
           if (config.poster && !video.getAttribute('poster')) video.poster = config.poster;
         }
       }
+
+      setupVideoSoundControls(mediaBox);
     } else {
       // Completely remove any video containers or placeholders
       article.classList.remove('has-video');
@@ -240,6 +246,90 @@ function applyProjectMediaConfig(manifest) {
       }
     }
   });
+}
+
+function setupVideoSoundControls(mediaBox) {
+  const video = mediaBox.querySelector('.project-video');
+  if (!video) return;
+
+  // Requirement: All project demonstration videos must start muted with default volume zero.
+  video.muted = true;
+  video.volume = 0;
+
+  let soundBtn = mediaBox.querySelector('.video-sound-toggle');
+  if (!soundBtn) {
+    soundBtn = document.createElement('button');
+    soundBtn.type = 'button';
+    soundBtn.className = 'video-sound-toggle';
+    soundBtn.setAttribute('aria-label', 'Enable sound');
+    soundBtn.setAttribute('title', 'Enable sound');
+    soundBtn.innerHTML = `
+      <span class="sound-icon sound-icon--muted" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor"></polygon>
+          <line x1="23" y1="9" x2="17" y2="15"></line>
+          <line x1="17" y1="9" x2="23" y2="15"></line>
+        </svg>
+      </span>
+      <span class="sound-icon sound-icon--unmuted" aria-hidden="true" style="display: none;">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor"></polygon>
+          <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+          <path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path>
+        </svg>
+      </span>
+      <span class="sound-label">SOUND</span>
+    `;
+    mediaBox.appendChild(soundBtn);
+  }
+
+  // Requirement: Clicking Play must not enable sound.
+  video.addEventListener('play', () => {
+    if (!soundBtn.classList.contains('is-unmuted')) {
+      video.muted = true;
+      video.volume = 0;
+    }
+  });
+
+  // Sync state if volume/mute changed from native controls
+  video.addEventListener('volumechange', () => {
+    const isMuted = video.muted || video.volume === 0;
+    soundBtn.classList.toggle('is-unmuted', !isMuted);
+    soundBtn.setAttribute('aria-label', isMuted ? 'Enable sound' : 'Mute video');
+    soundBtn.setAttribute('title', isMuted ? 'Enable sound' : 'Mute video');
+    const label = soundBtn.querySelector('.sound-label');
+    if (label) label.textContent = isMuted ? 'SOUND' : 'SOUND ON';
+  });
+
+  if (soundBtn._soundBound) return;
+  soundBtn._soundBound = true;
+
+  soundBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    e.preventDefault();
+
+    // Toggle sound state without triggering video playback
+    if (video.muted || video.volume === 0) {
+      video.muted = false;
+      video.volume = 1.0;
+      soundBtn.classList.add('is-unmuted');
+      soundBtn.setAttribute('aria-label', 'Mute video');
+      soundBtn.setAttribute('title', 'Mute video');
+      const label = soundBtn.querySelector('.sound-label');
+      if (label) label.textContent = 'SOUND ON';
+    } else {
+      video.muted = true;
+      video.volume = 0;
+      soundBtn.classList.remove('is-unmuted');
+      soundBtn.setAttribute('aria-label', 'Enable sound');
+      soundBtn.setAttribute('title', 'Enable sound');
+      const label = soundBtn.querySelector('.sound-label');
+      if (label) label.textContent = 'SOUND';
+    }
+  });
+
+  soundBtn.addEventListener('touchstart', (e) => e.stopPropagation(), { passive: true });
+  soundBtn.addEventListener('touchend', (e) => e.stopPropagation(), { passive: true });
 }
 
 function initProjectMedia() {
@@ -515,6 +605,12 @@ function turnTo(n, immediate = false) {
   const from = current;
   const to = n;
   current = to;
+
+  // Pause any playing videos when navigating to a different page
+  document.querySelectorAll('.project-video').forEach(vid => {
+    if (!vid.paused) vid.pause();
+  });
+
   updateUI();
   playFlipSound();
 
